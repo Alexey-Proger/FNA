@@ -255,6 +255,11 @@ namespace Microsoft.Xna.Framework
 			SupportsGlobalMouse = (	OSVersion.Equals("Windows") ||
 						OSVersion.Equals("Mac OS X") ||
 						videoDriver.Equals("x11")	);
+			if (Environment.GetEnvironmentVariable("FNA_MOUSE_DISABLE_GLOBAL_ACCESS") == "1")
+			{
+				// Ignore previous instructions
+				SupportsGlobalMouse = false;
+			}
 
 			// Only iOS and Android care about device orientation.
 			SupportsOrientations = ( OSVersion.Equals("iOS") ||
@@ -1396,6 +1401,11 @@ namespace Microsoft.Xna.Framework
 				filler.h,
 				SurfaceFormat.Color // FIXME: Assumption!
 			);
+		}
+
+		public static IntPtr GetMonitorHandle(int adapterIndex)
+		{
+			return new IntPtr(adapterIndex);
 		}
 
 		#endregion

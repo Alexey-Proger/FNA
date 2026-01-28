@@ -622,6 +622,10 @@ namespace Microsoft.Xna.Framework.Graphics
 
 		public void Present()
 		{
+			if (renderTargetCount > 0)
+			{
+				throw new InvalidOperationException("Cannot present while render targets are bound");
+			}
 			FNA3D.FNA3D_SwapBuffers(
 				GLDevice,
 				IntPtr.Zero,
@@ -635,6 +639,10 @@ namespace Microsoft.Xna.Framework.Graphics
 			Rectangle? destinationRectangle,
 			IntPtr overrideWindowHandle
 		) {
+			if (renderTargetCount > 0)
+			{
+				throw new InvalidOperationException("Cannot present while render targets are bound");
+			}
 			if (overrideWindowHandle == IntPtr.Zero)
 			{
 				overrideWindowHandle = PresentationParameters.DeviceWindowHandle;
