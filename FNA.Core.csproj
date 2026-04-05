@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net8.0</TargetFrameworks>
+		<TargetFrameworks>net10.0</TargetFrameworks>
 		<Platforms>AnyCPU</Platforms>
 	</PropertyGroup>
 	<PropertyGroup>
@@ -12,6 +12,7 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<FNASettingsPropsFilePath>$(SolutionDir)FNA.Settings.props</FNASettingsPropsFilePath>
+		<PlatformTarget>ARM64</PlatformTarget>
 	</PropertyGroup>
 	<Import Project="$(FNASettingsPropsFilePath)" Condition="Exists('$(FNASettingsPropsFilePath)')" />
 	<Target Name="ValidatePropsFilePath" BeforeTargets="BeforeBuild">
